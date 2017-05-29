@@ -4,18 +4,19 @@
 const {dialog} = require('electron').remote;
 var fs = require('fs')
 var folderName;
+var baseDir;
 function folder(){
-    folderName = document.getElementById("myText").value
-    dialog.showOpenDialog({properties:['openDirectory']}, function(baseDir){
-        if(baseDir & folderName1 !== undefined){
-            fs.mkdir(baseDir + folderName)
+    folderName = document.getElementById("project").value
+    dialog.showOpenDialog({properties:['openDirectory']}, function(Dir){
+        baseDir = Dir
+    })
+}
+function mkdir(){
+        if(baseDir !== undefined){
+            fs.mkdir(baseDir + "/" + folderName)
             console.log(baseDir[0]);
         }
         else{
             console.log("Select a folder")
-        }
-    })
-}
-function mkdir(){
-    
+        }   
 }
